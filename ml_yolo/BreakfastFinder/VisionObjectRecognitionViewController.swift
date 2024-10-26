@@ -72,7 +72,9 @@ class VisionObjectRecognitionViewController: ViewController {
                 let direction = objectCenterX < (screenWidth / 2) ? "左" : "右" // 中央より左か右かを判断
                 
                 // 音声で方向を読み上げる
-                speakDirection(direction)
+                if(topLabelObservation.confidence < 0.9){
+                    speakDirection(direction)
+                }
                 
                 let shapeLayer = self.createRoundedRectLayerWithBounds(objectBounds)
                 
