@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7A0F3A362CCCD3D7005444A9 /* ObjectiveDetector.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 7A0F3A352CCCD3D6005444A9 /* ObjectiveDetector.mlmodel */; };
+		7A0F3A382CCCD539005444A9 /* ObjectiveDetector.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 7A0F3A372CCCD539005444A9 /* ObjectiveDetector.mlmodel */; };
 		FA4750CA20BF3F48003E19ED /* Breakfast Finder Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = FA4750C920BF3F48003E19ED /* Breakfast Finder Logo.png */; };
 		FAB417F62099308400494E9C /* VisionObjectRecognitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB417F52099308400494E9C /* VisionObjectRecognitionViewController.swift */; };
 		FAD5009F1ED668B60074D713 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD5009E1ED668B60074D713 /* AppDelegate.swift */; };
@@ -19,7 +19,7 @@
 
 /* Begin PBXFileReference section */
 		7984D3D3A63BDFC4A07FEF8F /* SampleCode.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = SampleCode.xcconfig; path = Configuration/SampleCode.xcconfig; sourceTree = "<group>"; };
-		7A0F3A352CCCD3D6005444A9 /* ObjectiveDetector.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = ObjectiveDetector.mlmodel; path = ../../../../../Downloads/ObjectiveDetector.mlmodel; sourceTree = "<group>"; };
+		7A0F3A372CCCD539005444A9 /* ObjectiveDetector.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = ObjectiveDetector.mlmodel; path = ../../../../../Downloads/ObjectiveDetector.mlmodel; sourceTree = "<group>"; };
 		C2A2AB60C2A2AB2000000001 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		E3CB966204CD821C6969C2A3 /* LICENSE.txt */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		FA4750C920BF3F48003E19ED /* Breakfast Finder Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Breakfast Finder Logo.png"; sourceTree = SOURCE_ROOT; };
@@ -82,7 +82,7 @@
 		FAD5009D1ED668B60074D713 /* BreakfastFinder */ = {
 			isa = PBXGroup;
 			children = (
-				7A0F3A352CCCD3D6005444A9 /* ObjectiveDetector.mlmodel */,
+				7A0F3A372CCCD539005444A9 /* ObjectiveDetector.mlmodel */,
 				FAD5009E1ED668B60074D713 /* AppDelegate.swift */,
 				FAD500A01ED668B60074D713 /* ViewController.swift */,
 				FAB417F52099308400494E9C /* VisionObjectRecognitionViewController.swift */,
@@ -169,8 +169,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7A0F3A362CCCD3D7005444A9 /* ObjectiveDetector.mlmodel in Sources */,
 				FAB417F62099308400494E9C /* VisionObjectRecognitionViewController.swift in Sources */,
+				7A0F3A382CCCD539005444A9 /* ObjectiveDetector.mlmodel in Sources */,
 				FAD500A11ED668B60074D713 /* ViewController.swift in Sources */,
 				FAD5009F1ED668B60074D713 /* AppDelegate.swift in Sources */,
 			);
