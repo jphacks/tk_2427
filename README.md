@@ -6,7 +6,7 @@
 [こちら](https://youtu.be/Jx81Q2Q_JAw)からデモ動画をご覧いただけます．
 
 ## 開発メンバー
-- [岡山　慎吾](https://github.com/)
+- [岡山　慎吾](https://github.com/shin5trp)
 - [清　恵人](https://github.com/SeiKdesu)
 
 
