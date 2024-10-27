@@ -1,10 +1,3 @@
-/*
-See the LICENSE.txt file for this sample’s licensing information.
-
-Abstract:
-Contains the object recognition view controller for the Breakfast Finder.
-*/
-
 import UIKit
 import AVFoundation
 import Vision
@@ -16,6 +9,15 @@ class VisionObjectRecognitionViewController: ViewController {
     // Vision parts
     private var requests = [VNRequest]()
     
+    // Speech synthesizer instance
+    private let speechSynthesizer = AVSpeechSynthesizer()
+    
+    // Confidence threshold for speaking out the object
+    private let confidenceThreshold: Float = 0.9 // Set your desired threshold here
+    
+    // Set to track recognized objects
+    private var lastRecognizedObjects: Set<String> = []
+
     @discardableResult
     func setupVision() -> NSError? {
         // Setup Vision parts
@@ -46,6 +48,9 @@ class VisionObjectRecognitionViewController: ViewController {
         CATransaction.begin()
         CATransaction.setValue(kCFBooleanTrue, forKey: kCATransactionDisableActions)
         detectionOverlay.sublayers = nil // remove all the old recognized objects
+
+        var currentRecognizedObjects: Set<String> = []
+
         for observation in results where observation is VNRecognizedObjectObservation {
             guard let objectObservation = observation as? VNRecognizedObjectObservation else {
                 continue
@@ -55,15 +60,43 @@ class VisionObjectRecognitionViewController: ViewController {
             let objectBounds = VNImageRectForNormalizedRect(objectObservation.boundingBox, Int(bufferSize.width), Int(bufferSize.height))
             
             let shapeLayer = self.createRoundedRectLayerWithBounds(objectBounds)
-            
-            let textLayer = self.createTextSubLayerInBounds(objectBounds,
-                                                            identifier: topLabelObservation.identifier,
-                                                            confidence: topLabelObservation.confidence)
+            let textLayer = self.createTextSubLayerInBounds(objectBounds, identifier: topLabelObservation.identifier, confidence: topLabelObservation.confidence)
             shapeLayer.addSublayer(textLayer)
             detectionOverlay.addSublayer(shapeLayer)
+
+            // Check if the confidence is above the threshold
+            if topLabelObservation.confidence >= confidenceThreshold {
+                currentRecognizedObjects.insert(topLabelObservation.identifier)
+
+                // Determine the direction of the object
+                let objectPosition = objectBounds.origin.x + objectBounds.size.width / 2 // オブジェクトの中心位置を計算
+                let midScreenX = bufferSize.width / 2
+                
+                let direction = objectPosition < midScreenX ? "左" : "右" // "left" or "right"
+                let speechString = " \(topLabelObservation.identifier)は、\(direction)にあります。" // "Recognized object: [name], position is [left/right]."
+                
+                // Speak if the object is newly recognized
+                if !lastRecognizedObjects.contains(topLabelObservation.identifier) {
+                    speakText(speechString)
+                }
+            }
         }
+
+        // Update recognized objects set
+        lastRecognizedObjects = currentRecognizedObjects
         self.updateLayerGeometry()
         CATransaction.commit()
+    }
+    
+    func speakText(_ text: String) {
+        // Stop any ongoing speech before starting a new one
+        if speechSynthesizer.isSpeaking {
+            speechSynthesizer.stopSpeaking(at: .immediate)
+        }
+
+        let speechUtterance = AVSpeechUtterance(string: text)
+        speechUtterance.voice = AVSpeechSynthesisVoice(language: "ja-JP") // Set to Japanese voice
+        speechSynthesizer.speak(speechUtterance)
     }
     
     override func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
@@ -124,7 +157,6 @@ class VisionObjectRecognitionViewController: ViewController {
         detectionOverlay.position = CGPoint(x: bounds.midX, y: bounds.midY)
         
         CATransaction.commit()
-        
     }
     
     func createTextSubLayerInBounds(_ bounds: CGRect, identifier: String, confidence: VNConfidence) -> CATextLayer {
@@ -154,5 +186,4 @@ class VisionObjectRecognitionViewController: ViewController {
         shapeLayer.cornerRadius = 7
         return shapeLayer
     }
-    
 }
