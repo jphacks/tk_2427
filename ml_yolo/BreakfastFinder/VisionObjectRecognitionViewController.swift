@@ -13,7 +13,7 @@ class VisionObjectRecognitionViewController: ViewController, AVSpeechSynthesizer
     private let speechSynthesizer = AVSpeechSynthesizer()
     
     // Confidence threshold for speaking out the object
-    private let confidenceThreshold: Float = 0.9 // Set your desired threshold here
+    private let confidenceThreshold: Float = 0.8 // Set your desired threshold here
     
     // Set to track recognized objects
     private var lastRecognizedObjects: Set<String> = []
@@ -77,15 +77,15 @@ class VisionObjectRecognitionViewController: ViewController, AVSpeechSynthesizer
                 currentRecognizedObjects.insert(topLabelObservation.identifier)
 
                 // Determine the direction of the object
-                let objectPosition = objectBounds.origin.x + objectBounds.size.width / 2 // Calculate center position of the object
-                let midScreenX = bufferSize.width / 2
+                let objectPositionY = objectBounds.origin.y + objectBounds.size.height / 2
+                let midScreenY = bufferSize.height / 2
                 
-                let direction = objectPosition < midScreenX ? "左" : "右" // "left" or "right"
-                let speechString = " \(topLabelObservation.identifier)は、\(direction)にあります。" // "Recognized object: [name], position is [left/right]."
+                let direction = objectPositionY < midScreenY ? "左" : "右" // "upper" or "lower"
+                let speechString = " \(topLabelObservation.identifier)は、\(direction)にあります。"
 
-                // Speak if the object is newly recognized and not currently speaking
                 if !lastRecognizedObjects.contains(topLabelObservation.identifier) && !isSpeaking {
                     speakText(speechString)
+
                 }
             }
         }
