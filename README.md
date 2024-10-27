@@ -80,8 +80,7 @@ https://www.youtube.com/shorts/7mGhZBy0kNQ
 
 
 ## 開発技術
-![イエロー　シンプル　イラスト　応募方法　フロー　Twitter投稿](https://github.com/user-attachments/assets/46f07b63-3339-4883-8fdc-dcc1a48aa1fc)
-
+![イエロー　シンプル　イラスト　応募方法　フロー　Twitter投稿](https://github.com/user-attachments/assets/b96f6283-d3de-4c78-b9a3-a2dab723b26f)
 
 
 ### 活用した技術
