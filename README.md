@@ -66,10 +66,12 @@ https://www.youtube.com/shorts/7mGhZBy0kNQ
   
 ### 展望2：クラス数の増加
 商品を認識できる種類に限りがあるため、再学習を行って選択可能なクラス数を増やしていきます。
-![image](https://github.com/user-attachments/assets/5ee67f87-be57-4ee5-b45f-38dcb1b921d5)
 
 ### 展望3：値段などの情報も伝えるようにする
 文字認識技術を用いて、値段など買い物客に有益な情報も伝えられるようにします。
+
+![image](https://github.com/user-attachments/assets/5ee67f87-be57-4ee5-b45f-38dcb1b921d5)
+
 
 ## 注力したこと
 ### ポイント1：画像認識（YOLOの実装）
