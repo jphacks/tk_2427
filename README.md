@@ -1,5 +1,5 @@
 # Shopiris（しょぷりす）
-![cover](https://github.com/jphacks/NG_2305/assets/109562639/d6412a9f-97bf-4412-8c15-e3613416b732)
+![Colorful Planner Mobile App Promotion Instagram Post](https://github.com/user-attachments/assets/e3f047c4-1e6e-4c53-bda6-081130d55973)
 
 
 ## デモ動画
